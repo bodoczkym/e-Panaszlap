@@ -1,0 +1,25 @@
+body {
+    font-family:sans-serif;
+	background-color:lightgreen;
+}
+
+h2 {
+	color:lime;
+	text-shadow:2px 2px gray;
+}
+    
+/*label:hover {
+	font-size:24pt;
+}*/
+
+input:focus {
+    background-color:yellow;
+}
+    
+textarea:focus {
+	background-color:yellow;
+}
+
+.Rovat {
+	display: none;
+}

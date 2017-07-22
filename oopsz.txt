@@ -1,0 +1,19 @@
+Országos Operatív Panaszkezelõ Szervezet
+Szomszéd bepanaszoló e-ûrlap
+A panaszok benyújtása: Kinyomtatva, aláírva, személyesen. Az elsõ oldalon egy panasz szerepelhet, a további oldalakon három.
+Kitöltési útmutató: Az automatikus feldolgozás érdekében csak dõlt nagybetûkkel, fekete tintával kitöltött ûrlapokat tudunk elfogadni.
+Ügyfélfogadás: minden szökõnapon szünettel
+ESZEMENT alrendszer: A dinamikusan létrehozott ûrlapon berögzített adatok konvertálása JSON formátumra.
+
+Az OOPSZ pályázatot írt ki szoftver fejlesztési feladatra. Cél a lakosok szomszédaikkal kapcsolatos panaszainak elektronikus begyûjtésének támogatása.
+Az elkészült programmal kapcsolatban továbbfejlesztési igény lépett fel, melynek megvalósítása a feladatunk.
+
+(*) Meg kell oldani, hogy az ûrlapon pontosan annyi rovat legyen, ahány szomszédra vonatkozóan az adatközlõ panaszt szeretne rögzíteni.
+(*)(OPCIONÁLIS!) A panaszos ingatlanjának típusa alapján történjen validálás a szomszéd tipusára vonatkozóan.
+(*) A panaszos tájékoztatása érdekében figyelemfelkeltõ módon meg kell jeleníteni a benyújtáskor fizetendõ ügykezelési díjat.
+	(**) Az ügykezelési díj számítási szabályai: Az elsõ oldal 10 zseton, minden további oldalra vonatkozóan panaszonként 2 zseton.
+(*) Meg kell oldani, hogy az ûrlap benyújtható legyen.
+(*) A weboldal megjelenését igazítani kell a hasonló országos szervezetek egységes forma, szín és képvilágához.
+(*) A JSON formátumú adatokat felhasználva lehessen rekonstruálni az ûrlapot. A panaszos számára mutasson a program két ûrlapot egymás mellett, 
+hogy az önellenõrzés megvalósítható legyen. Az egyik ûrlapot a panaszos tölti, míg a másik JSON alapján generálódik. A generált ûrlapon ne lehessen adatokat módosítani.
+

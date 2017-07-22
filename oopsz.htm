@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="utf-8"> 
+  <title>e-Panaszlap</title>
+  <!--<link rel="stylesheet" href="oopsz.css">-->
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!-- Latest compiled JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+ <body>
+ <div class="container">
+  <h2>Szomszéd bepanaszoló űrlap</h2>
+  <form>
+    <label for="nameTextBox">Név:</label><br>
+    <input id="nameTextBox" name="nev"><br>
+    <label for="lakcimTextBox">Lakcím:</label><br>
+    <input id="lakcimTextBox" name="lakcim"><br>
+    <label for="szomszedokSzama">Panaszolni kívánt szomszéd(ok):</label><br>
+    Baloldali szomszéd<input onclick="baloldaliSzomszed();" class="radioButton" type="radio" name="SzRadio">
+    Jobboldali szomszéd<input onclick="jobboldaliSzomszed();" class="radioButton" type="radio" name="SzRadio">
+    Mindkét szomszéd<input onclick="mindketSzomszed();" class="radioButton" type="radio" name="SzRadio"><br>
+    
+    <div class="input-group" style="display: none;"> 
+      <span class="input-group-addon">Bal oldali szomszéd</span>
+      <textarea id="balpanaszTextBox" type="text" class="form-control" name="balpanasz" placeholder="Kérem ide írja  a panaszát"></textarea>
+    </div>
+    <div class="input-group" style="display: none;">
+      <span class="input-group-addon">Jobb oldali szomszéd</span>
+      <textarea id="jobbpanaszTextBox" type="text" class="form-control" name="jobbpanasz" placeholder="Kérem ide írja a panaszát"></textarea>
+    </div>
+   
+   <button type="submit" class="btn btn-primary">Submit</button>
+   <button type="button" class="btn btn-primary" onclick="previewEventHandler();">Preview</button>
+   <input type="button" class="btn btn-primary" value="Print preview" title="Print preview" onclick="print();">
+  </form>
+
+  <!-- Nem módosítható előnézet -->
+  <form id="JSONform">
+    <label >Név:</label><br>
+    <input id="nevPreview" readonly><br>
+    <label>Lakcím:</label><br>
+    <input id="lakcimPreview" readonly><br>
+   <fieldset>
+    <legend>Baloldali szomszéd</legend>
+    <label>Panasz:</label><br>
+    <textarea id="balPanaszTextBoxPreview" readonly></textarea>
+   </fieldset>
+   <fieldset>
+    <legend>Jobboldali szomszéd</legend>
+    <label>Panasz:</label><br>
+    <textarea readonly id="jobbPanaszTextBoxPreview"></textarea>
+   </fieldset>
+   </form>
+  <p>
+   <div>A panaszok benyújtása: kinyomtatva, aláírva, személyesen</div>
+   <div>Országos Operatív Panaszkezelő Szervezet</div>
+   <div>Honlap: <a href="www.oopsz.mi">oopsz.mivan</a></div>
+   <div>Ügyfélfogadás: minden szökőnapon szünettel</div>
+  </p>
+  <p><sup>&copy;</sup>Kissfalusy Zrt.</p>
+  <script type="text/javascript" src="oopsz.js"></script>
+  </div>
+ </body>
+</html>
