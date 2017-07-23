@@ -1,95 +1,128 @@
 <!doctype html>
 <html>
- <head>
-  <meta charset="utf-8"> 
-  <title>e-Panaszlap</title>
-  <!--<link rel="stylesheet" href="oopsz.css">-->
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <!-- jQuery library -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <!-- Latest compiled JavaScript -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<head>
+	<meta charset="utf-8"> 
+	<title>e-Panaszlap</title>
+	<!--<link rel="stylesheet" href="oopsz.css">-->
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<!-- jQuery library -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<!-- Latest compiled JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
- <body>
- <div class="container">
-  <h2>Szomszéd bepanaszoló űrlap</h2>
-  <form class="form-horizontal">
-	 <div class="form-group">
-		<label class="control-label col-sm-2" for="nameTextBox">Név:</label>
-		<div class="col-sm-10">
-			<input type="text" class="form-control" id="nameTextBox" name="nev">
+<body>
+	<div class="container">
+		<h2>Szomszéd bepanaszoló űrlap</h2>
+		<div class="row">
+	        <div class="col-xs-6">
+			<form class="form-horizontal">
+
+				<!-- Név mező -->
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="nameTextBox">Név:</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="nameTextBox" name="nev"> 
+					</div>
+				</div>
+
+				<!-- Lakcím mező -->
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="lakcimTextBox">Lakcím:</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="lakcimTextBox" name="lakcim">
+					</div>
+				</div>
+
+				<!-- Panaszolni kívánt szomszédok számát kiválasztó gomb legördülő menüvel -->
+				<div class="input-group">
+					<span class="input-group-addon">Bepanaszolni kívánt szomszédok száma:</span>
+					<div class="btn-group"> 
+						<i class="dropdown-arrow dropdown-arrow-inverse"></i>
+						<button type="button" class="btn btn-default szomszedok">Kérem válasszon</button>
+						<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu dropdown-inverse">
+								<li><a href="#">1</a></li>
+								<li><a href="#">2</a></li>
+								<li><a href="#">3</a></li>
+								<li><a href="#">4</a></li>
+								<li><a href="#">5</a></li>
+								<li><a href="#">6</a></li>
+								<li><a href="#">7</a></li>
+								<li><a href="#">8</a></li>
+								<li><a href="#">9</a></li>
+								<li><a href="#">10</a></li>            
+								<li><a href="#">11</a></li>
+								<li><a href="#">12</a></li>
+								<li><a href="#">13</a></li>
+								<li><a href="#">14</a></li>            
+								<li><a href="#">15</a></li>
+								<li><a href="#">16</a></li>
+								<li><a href="#">17</a></li>
+								<li><a href="#">18</a></li>            
+								<li><a href="#">19</a></li>
+								<li><a href="#">20</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<br>
+				<!-- Ide kerülnek be szomszédok panaszmezői -->
+				<div id="panaszContainer"></div>
+
+				<div class="text-center">
+					<button type="submit" id="submitButton" class="btn btn-primary" onclick="hideSubmitButton()">Submit</button>
+					<button type="button" class="btn btn-info" onclick="previewEventHandler();"><span class="glyphicon glyphicon-picture"></span> Előnézet</button>
+					<a href="#" class="btn btn-success"><span class="glyphicon glyphicon-print"></span> Nyomtatás</a>
+				</div>
+			
+			</form>
+			<br>
+			</div>
+
+			<div class="col-xs-6">
+			<!-- Nem módosítható előnézet -->
+			<form id="previewForm" class="form-horizontal">
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="previewNameTextBox">Név:</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="previewNameTextBox" name="nevPreview" readonly>
+					</div>
+				</div>
+
+				<div class="form-group">
+					<label class="control-label col-sm-2" for="previewLakcimTextBox">Lakcím:</label>
+					<div class="col-sm-10">
+						<input type="text" class="form-control" id="previewLakcimTextBox" name="lakcimPreview" readonly>
+					</div>
+				</div>
+				
+				<!-- Invisible placeholder -->
+				<div class="input-group invisible">
+					<span class="input-group-addon"></span>
+					<div class="btn-group"> 
+						<button type="button" ></button>
+						<button class="btn dropdown-toggle" data-toggle="dropdown"> <span class="caret"></span>
+						</button>
+					</div>
+				</div>
+				<br>
+
+				<div id="previewPanaszContainer"></div>
+			</form>
+			</div>
 		</div>
-	</div>
-	<div class="form-group">
-		<label class="control-label col-sm-2" for="lakcimTextBox">Lakcím:</label>
-		<div class="col-sm-10">
-			<input type="text" class="form-control" id="lakcimTextBox" name="lakcim">
-		</div>
-	</div>
 
-<div class="input-group">
-	<span class="input-group-addon">Bepanaszolni kívánt szomszédok száma:</span>
-	<div class="btn-group" > 
-		<i class="dropdown-arrow dropdown-arrow-inverse"></i>
-		<button class="btn btn-default szomszedok">Kérem válasszon</button>
-		<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> <span class="caret"></span> 
-		</button>
-		<ul class="dropdown-menu dropdown-inverse">
-				<li id="n1"><a href="#">1</a></li>
-				<li id="n2"><a href="#">2</a></li>
-				<li><a href="#">3</a></li>
-				<li><a href="#">4</a></li>
-				<li><a href="#">5</a></li>
-				<li><a href="#">6</a></li>
-				<li><a href="#">7</a></li>
-				<li><a href="#">8</a></li>
-				<li><a href="#">9</a></li>
-				<li><a href="#">10</a></li>            
-				<li><a href="#">11</a></li>
-				<li><a href="#">12</a></li>
-				<li><a href="#">13</a></li>
-		</ul>
-	</div>
-</div>
-<br>
-
-<div id="panaszContainer">
-
-</div>
-
-<button type="submit" class="btn btn-primary">Submit</button>
-<button type="button" class="btn btn-primary" onclick="previewEventHandler();">Preview</button>
-<input type="button" class="btn btn-primary " value="Print preview" title="Print preview" onclick="print();">
-</form>
-<br>
-
-  <!-- Nem módosítható előnézet -->
-  <form id="JSONform">
-	<label >Név:</label><br>
-	<input id="nevPreview" readonly><br>
-	<label>Lakcím:</label><br>
-	<input id="lakcimPreview" readonly><br>
-   <fieldset>
-	<legend>Baloldali szomszéd</legend>
-	<label>Panasz:</label><br>
-	<textarea id="balPanaszTextBoxPreview" readonly></textarea>
-   </fieldset>
-   <fieldset>
-	<legend>Jobboldali szomszéd</legend>
-	<label>Panasz:</label><br>
-	<textarea readonly id="jobbPanaszTextBoxPreview"></textarea>
-   </fieldset>
-   </form>
-  <p>
-   <div>A panaszok benyújtása: kinyomtatva, aláírva, személyesen</div>
-   <div>Országos Operatív Panaszkezelő Szervezet</div>
-   <div>Honlap: <a href="www.oopsz.mi">oopsz.mivan</a></div>
-   <div>Ügyfélfogadás: minden szökőnapon szünettel</div>
-  </p>
-  <p><sup>&copy;</sup>Kissfalusy Zrt.</p>
-  <script type="text/javascript" src="oopsz.js"></script>
-  </div>
- </body>
+		<p>
+			<div>A panaszok benyújtása: kinyomtatva, aláírva, személyesen</div>
+			<div>Országos Operatív Panaszkezelő Szervezet</div>
+			<div>Honlap: <a href="www.oopsz.mi">oopsz.mivan</a></div>
+			<div>Ügyfélfogadás: minden szökőnapon szünettel</div>
+		</p>
+		<p><sup>&copy;</sup>Kissfalusy Zrt.</p>
+		<script type="text/javascript" src="oopsz.js"></script>
+  	</div>
+</body>
 </html>
