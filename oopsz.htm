@@ -13,6 +13,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
+	<div id="my-div" class="hidden">Hello, TB3</div>
+
 	<div class="container">
 		<h2>Szomszéd bepanaszoló űrlap</h2>
 		<div class="row">
@@ -37,7 +39,7 @@
 
 				<!-- Panaszolni kívánt szomszédok számát kiválasztó gomb legördülő menüvel -->
 				<div class="input-group">
-					<span class="input-group-addon">Bepanaszolni kívánt szomszédok száma:</span>
+					<span class="input-group-addon">Bepanaszolandó szomszédok száma:</span>
 					<div class="btn-group"> 
 						<i class="dropdown-arrow dropdown-arrow-inverse"></i>
 						<button type="button" class="btn btn-default szomszedok">Kérem válasszon</button>
@@ -72,18 +74,24 @@
 				<!-- Ide kerülnek be szomszédok panaszmezői -->
 				<div id="panaszContainer"></div>
 
+				<!-- Info mező a fizetésről -->
+				<div class="alert alert-info hidden" id="paymentInfo"></div>
+
 				<div class="text-center">
-					<button type="submit" id="submitButton" class="btn btn-primary" onclick="hideSubmitButton()">Submit</button>
+					<button type="submit" id="submitButton" class="btn btn-primary">Submit</button>
 					<button type="button" class="btn btn-info" onclick="previewEventHandler();"><span class="glyphicon glyphicon-picture"></span> Előnézet</button>
-					<a href="#" class="btn btn-success"><span class="glyphicon glyphicon-print"></span> Nyomtatás</a>
+					<a href="#" class="btn btn-success" onClick="window.print()"> <span class="glyphicon glyphicon-print"></span> Nyomtatás</a>
 				</div>
+				<script>
+
+				</script>
 			
 			</form>
 			<br>
 			</div>
 
-			<div class="col-xs-6">
 			<!-- Nem módosítható előnézet -->
+			<div class="col-xs-6">
 			<form id="previewForm" class="form-horizontal">
 				<div class="form-group">
 					<label class="control-label col-sm-2" for="previewNameTextBox">Név:</label>
@@ -98,7 +106,7 @@
 						<input type="text" class="form-control" id="previewLakcimTextBox" name="lakcimPreview" readonly>
 					</div>
 				</div>
-				
+
 				<!-- Invisible placeholder -->
 				<div class="input-group invisible">
 					<span class="input-group-addon"></span>
