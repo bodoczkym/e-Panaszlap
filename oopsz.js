@@ -3,8 +3,8 @@ var nodeJobbSzomszed = document.querySelectorAll("div")[2];
 var nameTextBox = document.querySelector("#nameTextBox");
 var lakcimTextBox = document.querySelector("#lakcimTextBox");
 var radioButton = document.querySelectorAll(".radioButton");
-var balpanaszTextBox = document.querySelector("#balpanaszTextBox");
-var jobbpanaszTextBox = document.querySelector("#jobbpanaszTextBox");
+var balpanaszTextBox = document.getElementById("balpanaszTextBox");
+var jobbpanaszTextBox = document.getElementById("jobbpanaszTextBox");
 
 var nameTextBoxPreview = document.getElementById("nevPreview");
 var lakcimTextBoxPreview = document.getElementById("lakcimPreview");
@@ -12,21 +12,34 @@ var balPanaszTextBoxPreview = document.getElementById('balPanaszTextBoxPreview')
 var jobbPanaszTextBoxPreview = document.getElementById("jobbPanaszTextBoxPreview");
 var panaszJsonString = {};
 
+$('.dropdown-inverse li > a').click(function(e){
+    $('.szomszedok').text(this.innerHTML);
 
-function baloldaliSzomszed(){
-    nodeBalSzomszed.style.display = "block";
-    nodeJobbSzomszed.style.display = "none";
-}
+});
 
-function jobboldaliSzomszed (){
-    nodeBalSzomszed.style.display = "none";
-    nodeJobbSzomszed.style.display = "block";
-}
+$('.dropdown-inverse li').click(function() {
+    var num = $(this).text(); // gets text contents of clicked li
+    $( "#panaszContainer").html(function() {
+        var currentNum = num;
+        var fullInnerHTML = "";
+        for (var i = 0; i < currentNum; i++) {
+            var index = i+1;
+            fullInnerHTML += "<div class=\"input-group\"><span class=\"input-group-addon\">"+index+". Szomszéd</span><textarea id=\"panasz"+ index +"\" type=\"text\" class=\"form-control\" name=\"panasz"+index+"\" placeholder=\"Kérem ide írja  a panaszát\"></textarea></div><br>";
+        }
+        return fullInnerHTML; 
+    });
+    //$(window.console&&console.log("text"));
+});
 
-function mindketSzomszed (){
-    nodeBalSzomszed.style.display = "block";
-    nodeJobbSzomszed.style.display = "block";
-}
+/*
+$( document ).ready(function() {
+    $('.dropdown-inverse li > a').click(function( event ) {
+ 
+        alert( "Thanks for visiting!" );
+ 
+    });
+});
+*/
 
 function previewEventHandler(){
 

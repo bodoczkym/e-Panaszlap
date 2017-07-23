@@ -15,45 +15,71 @@
  <body>
  <div class="container">
   <h2>Szomszéd bepanaszoló űrlap</h2>
-  <form>
-    <label for="nameTextBox">Név:</label><br>
-    <input id="nameTextBox" name="nev"><br>
-    <label for="lakcimTextBox">Lakcím:</label><br>
-    <input id="lakcimTextBox" name="lakcim"><br>
-    <label for="szomszedokSzama">Panaszolni kívánt szomszéd(ok):</label><br>
-    Baloldali szomszéd<input onclick="baloldaliSzomszed();" class="radioButton" type="radio" name="SzRadio">
-    Jobboldali szomszéd<input onclick="jobboldaliSzomszed();" class="radioButton" type="radio" name="SzRadio">
-    Mindkét szomszéd<input onclick="mindketSzomszed();" class="radioButton" type="radio" name="SzRadio"><br>
-    
-    <div class="input-group" style="display: none;"> 
-      <span class="input-group-addon">Bal oldali szomszéd</span>
-      <textarea id="balpanaszTextBox" type="text" class="form-control" name="balpanasz" placeholder="Kérem ide írja  a panaszát"></textarea>
-    </div>
-    <div class="input-group" style="display: none;">
-      <span class="input-group-addon">Jobb oldali szomszéd</span>
-      <textarea id="jobbpanaszTextBox" type="text" class="form-control" name="jobbpanasz" placeholder="Kérem ide írja a panaszát"></textarea>
-    </div>
-   
-   <button type="submit" class="btn btn-primary">Submit</button>
-   <button type="button" class="btn btn-primary" onclick="previewEventHandler();">Preview</button>
-   <input type="button" class="btn btn-primary" value="Print preview" title="Print preview" onclick="print();">
-  </form>
+  <form class="form-horizontal">
+	 <div class="form-group">
+		<label class="control-label col-sm-2" for="nameTextBox">Név:</label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" id="nameTextBox" name="nev">
+		</div>
+	</div>
+	<div class="form-group">
+		<label class="control-label col-sm-2" for="lakcimTextBox">Lakcím:</label>
+		<div class="col-sm-10">
+			<input type="text" class="form-control" id="lakcimTextBox" name="lakcim">
+		</div>
+	</div>
+
+<div class="input-group">
+	<span class="input-group-addon">Bepanaszolni kívánt szomszédok száma:</span>
+	<div class="btn-group" > 
+		<i class="dropdown-arrow dropdown-arrow-inverse"></i>
+		<button class="btn btn-default szomszedok">Kérem válasszon</button>
+		<button class="btn btn-primary dropdown-toggle" data-toggle="dropdown"> <span class="caret"></span> 
+		</button>
+		<ul class="dropdown-menu dropdown-inverse">
+				<li id="n1"><a href="#">1</a></li>
+				<li id="n2"><a href="#">2</a></li>
+				<li><a href="#">3</a></li>
+				<li><a href="#">4</a></li>
+				<li><a href="#">5</a></li>
+				<li><a href="#">6</a></li>
+				<li><a href="#">7</a></li>
+				<li><a href="#">8</a></li>
+				<li><a href="#">9</a></li>
+				<li><a href="#">10</a></li>            
+				<li><a href="#">11</a></li>
+				<li><a href="#">12</a></li>
+				<li><a href="#">13</a></li>
+		</ul>
+	</div>
+</div>
+<br>
+
+<div id="panaszContainer">
+
+</div>
+
+<button type="submit" class="btn btn-primary">Submit</button>
+<button type="button" class="btn btn-primary" onclick="previewEventHandler();">Preview</button>
+<input type="button" class="btn btn-primary " value="Print preview" title="Print preview" onclick="print();">
+</form>
+<br>
 
   <!-- Nem módosítható előnézet -->
   <form id="JSONform">
-    <label >Név:</label><br>
-    <input id="nevPreview" readonly><br>
-    <label>Lakcím:</label><br>
-    <input id="lakcimPreview" readonly><br>
+	<label >Név:</label><br>
+	<input id="nevPreview" readonly><br>
+	<label>Lakcím:</label><br>
+	<input id="lakcimPreview" readonly><br>
    <fieldset>
-    <legend>Baloldali szomszéd</legend>
-    <label>Panasz:</label><br>
-    <textarea id="balPanaszTextBoxPreview" readonly></textarea>
+	<legend>Baloldali szomszéd</legend>
+	<label>Panasz:</label><br>
+	<textarea id="balPanaszTextBoxPreview" readonly></textarea>
    </fieldset>
    <fieldset>
-    <legend>Jobboldali szomszéd</legend>
-    <label>Panasz:</label><br>
-    <textarea readonly id="jobbPanaszTextBoxPreview"></textarea>
+	<legend>Jobboldali szomszéd</legend>
+	<label>Panasz:</label><br>
+	<textarea readonly id="jobbPanaszTextBoxPreview"></textarea>
    </fieldset>
    </form>
   <p>
